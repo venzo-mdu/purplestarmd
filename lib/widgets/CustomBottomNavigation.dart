@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:purplestarmd/screens/profile/HelpPage.dart';
+import 'package:purplestarmd/screens/profile/RegisterPage.dart';
 
 import '../constants.dart';
 import '../screens/HomePage.dart';
 import '../screens/profile/SignIn.dart';
 
 class CustomBottomNavigation extends StatefulWidget{
-  int currentIndex = 2;
-  final display = [HomePage(), HomePage(), HomePage(), SignIn()];
 
   @override
   State<CustomBottomNavigation> createState() => _CustomBottomNavigationState();
 }
 
 class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
-  int _selectedIndex = 2;
-  final display = <Widget>[SignIn(), SignIn(), SignIn(), SignIn()];
+  int _selectedIndex = 0;
+  int currentIndex = 2;
+  final display = <Widget>[HelpPage(), RegisterPage(), SignIn(), SignIn()];
 
   void _onItemTapped(int index) {
     setState(() {
