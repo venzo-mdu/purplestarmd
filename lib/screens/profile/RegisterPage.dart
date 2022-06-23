@@ -13,7 +13,14 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 50),
+            child: Text('Register page merge you soon'),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 50),
+            child: Text('Register page merge you soon'),
+          )
         ],
       ),
     );
