@@ -1,14 +1,18 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/constants.dart';
 import 'package:purplestarmd/screens/profile/UserPassword.dart';
-import 'package:purplestarmd/widgets/CustomBottomNavigation.dart';
-import '../../widgets/CustomAppBar.dart';
 import 'RegisterPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
+
+  // class SendData {
+  // final String email;
+  //
+  // SendData(this.email);
+  // }
 
   @override
   State<SignIn> createState() => _SignInState();
@@ -22,7 +26,6 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 35, horizontal: 25),
@@ -114,7 +117,8 @@ class _SignInState extends State<SignIn> {
                       ),
                       child: Text(
                         'SUBMIT',
-                        textScaleFactor: 1.5,
+                        style: TextStyle(fontFamily: 'BebasNeue', fontSize: 20),
+                        // textScaleFactor: 1.5,
                       ),
                     ),
                   ),
@@ -124,7 +128,7 @@ class _SignInState extends State<SignIn> {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const RegisterPage()),
+                          MaterialPageRoute(builder: (context) => RegisterPage()),
                         );
                       },
                       child: RichText(
@@ -162,7 +166,7 @@ class _SignInState extends State<SignIn> {
                   InkWell(
                     onTap: (){},
                     child: ListTile(
-                      trailing: const Icon(Icons.chevron_right),
+                      trailing: Icon(Icons.chevron_right),
                       title: Text(
                         'Blog',
                         style: TextStyle(
@@ -198,7 +202,7 @@ class _SignInState extends State<SignIn> {
           ),
         ),
       ),
-      bottomNavigationBar: CustomBottomNavigation(),
     );
   }
 }
+

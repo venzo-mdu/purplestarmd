@@ -8,7 +8,7 @@ class HelpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      bottomNavigationBar: CustomBottomNavigation(),
+      // bottomNavigationBar: CustomBottomNavigation(),
     );
   }
 }

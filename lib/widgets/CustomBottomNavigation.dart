@@ -13,38 +13,40 @@ class CustomBottomNavigation extends StatefulWidget{
 }
 
 class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
-  int _selectedIndex = 0;
-  int currentIndex = 2;
-  final display = <Widget>[HelpPage(), RegisterPage(), SignIn(), SignIn()];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+  // int _selectedIndex = 0;
+  // final display = <Widget>[HomePage(), RegisterPage(), SignIn(), SignIn()];
+  //
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _selectedIndex = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      type: BottomNavigationBarType.fixed,
-      showUnselectedLabels: true,
-      unselectedItemColor: Colors.black,
-      selectedItemColor: mPrimaryColor,
-      items: [
-        BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home' ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.monetization_on),
-            label: 'Sales' ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            label: 'Cart' ),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Profile' ),
-      ],
-      onTap: _onItemTapped,
+    return Scaffold(
+      // body: display.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        showUnselectedLabels: true,
+        unselectedItemColor: Colors.black,
+        selectedItemColor: mPrimaryColor,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home' ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.monetization_on),
+              label: 'Sales' ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart),
+              label: 'Cart' ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle),
+              label: 'Profile' ),
+        ],
+        // onTap: _onItemTapped,
+      ),
     );
   }
 }

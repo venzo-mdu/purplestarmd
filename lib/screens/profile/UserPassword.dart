@@ -4,6 +4,7 @@ import 'package:purplestarmd/widgets/CustomAppBar.dart';
 import 'package:purplestarmd/widgets/CustomBottomNavigation.dart';
 
 import '../../constants.dart';
+import 'ProfilePage.dart';
 
 class UserPassword extends StatefulWidget {
   const UserPassword({Key? key}) : super(key: key);
@@ -93,7 +94,7 @@ class _UserPasswordState extends State<UserPassword> {
                   child: ElevatedButton(
                     onPressed: () {
                       if(_formKey.currentState!.validate()) {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => SignIn()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -120,7 +121,7 @@ class _UserPasswordState extends State<UserPassword> {
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomNavigation(),
+      // bottomNavigationBar: CustomBottomNavigation(),
     );
   }
 }
