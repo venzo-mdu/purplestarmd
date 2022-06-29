@@ -17,6 +17,7 @@ dependencies:
   firebase_core: ^1.18.0
   shared_preferences:
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -31,6 +32,16 @@ flutter:
    - family: Poppins
      fonts:
        - asset: assets/fonts/Poppins-Regular.ttf
+         style: normal
+
+   - family: Poppins-SemiBold
+     fonts:
+       - asset: assets/fonts/Poppins-SemiBold.ttf
+         style: normal
+
+   - family: Poppins-Bold
+     fonts:
+       - asset: assets/fonts/Poppins-Bold.ttf
          style: normal
 
    - family: BebasNeue

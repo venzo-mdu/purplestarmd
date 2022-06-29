@@ -1,8 +1,8 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/screens/profile/CartPage.dart';
 import 'package:purplestarmd/screens/profile/ProfilePage.dart';
+import 'package:purplestarmd/screens/profile/Register.dart';
 import 'package:purplestarmd/screens/profile/SignIn.dart';
 
 import '../../constants.dart';
@@ -18,9 +18,10 @@ class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
   String? email;
   String? name;
-
   bool visiblePassword = false;
   bool value = false;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 'register',
                 style: TextStyle(fontFamily: 'BebasNeue', fontSize: 30),
               ),
-
               Padding(
                 padding: EdgeInsets.only(top: 20),
                 child: Column(
@@ -54,6 +54,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     Form(
                       key: _formKey,
                       child: TextFormField(
+
                         keyboardType: TextInputType.text,
                         validator: (value) {
                           if(value?.isEmpty ?? true) {

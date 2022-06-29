@@ -91,27 +91,31 @@ class _UserPasswordState extends State<UserPassword> {
 
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 25),
-                  child: ElevatedButton(
-                    onPressed: () {
-                      if(_formKey.currentState!.validate()) {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
-                      }
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
+                  child: SizedBox(
+                    height: 50,
+                    width: MediaQuery.of(context).size.width,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if(_formKey.currentState!.validate()) {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        primary: mPrimaryColor,
+                        padding:
+                        EdgeInsets.symmetric(vertical: 13, horizontal: 130),
+                        textStyle: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                      primary: mPrimaryColor,
-                      padding:
-                      EdgeInsets.symmetric(vertical: 13, horizontal: 130),
-                      textStyle: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
+                      child: Text(
+                        'SUBMIT',style: TextStyle(fontFamily: 'BebasNeue', fontSize: 20),
+                        // textScaleFactor: 1.5,
                       ),
-                    ),
-                    child: Text(
-                      'SUBMIT',
-                      textScaleFactor: 1.5,
                     ),
                   ),
                 ),

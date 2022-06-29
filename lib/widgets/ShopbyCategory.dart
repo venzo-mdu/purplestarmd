@@ -45,8 +45,8 @@ class ShopbyCategory extends StatelessWidget {
             ),
           ),
           
-          SizedBox(height: 25,),
-          Text(shopModel.title, style: TextStyle(fontFamily: 'Poppins', fontSize: 15, fontWeight: FontWeight.w500)),
+          SizedBox(height: 15,),
+          Text(shopModel.title, style: TextStyle(fontFamily: 'Poppins', fontSize: 15, fontWeight: FontWeight.bold)),
         ],
       ),
     );

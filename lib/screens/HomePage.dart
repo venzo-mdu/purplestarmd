@@ -47,19 +47,19 @@ class _HomePageState extends State<HomePage> {
             onDestinationSelected: (currentIndex) => setState(() => this.currentIndex = currentIndex),
             destinations: [
               NavigationDestination(
-                  icon: Icon(Icons.home),
+                  icon: Icon(Icons.home_outlined),
                   label: 'Home'
               ),
               NavigationDestination(
-                  icon: Icon(Icons.monetization_on),
+                  icon: Icon(Icons.monetization_on_outlined),
                   label: 'Sales'
               ),
               NavigationDestination(
-                  icon: Icon(Icons.shopping_cart),
+                  icon: Icon(Icons.shopping_cart_outlined),
                   label: 'Cart'
               ),
               NavigationDestination(
-                  icon: Icon(Icons.account_circle),
+                  icon: Icon(Icons.account_circle_outlined),
                   label: 'Profile'
               ),
             ],
@@ -77,16 +77,16 @@ class _HomePageState extends State<HomePage> {
         // onTap: (int index) =>setState(() => currentIndex = index),
         // items: [
         //   BottomNavigationBarItem(
-        //       icon: Icon(Icons.home),
+        //       icon: Icon(Icons.home_outlined),
         //       label: 'Home' ),
         //   BottomNavigationBarItem(
-        //       icon: Icon(Icons.monetization_on),
+        //       icon: Icon(Icons.monetization_on_outlined),
         //       label: 'Sales' ),
         //   BottomNavigationBarItem(
-        //       icon: Icon(Icons.shopping_cart),
+        //       icon: Icon(Icons.shopping_cart_outlined),
         //       label: 'Cart' ),
         //   BottomNavigationBarItem(
-        //       icon: Icon(Icons.account_circle),
+        //       icon: Icon(Icons.account_circle_outlined),
         //       label: 'Profile' ),
         // ],
       ),
