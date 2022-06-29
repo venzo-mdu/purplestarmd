@@ -25,19 +25,12 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-      // body: Center(
-      //   child: display.elementAt(currentIndex),
-      // ),
 
       body: display[currentIndex],
 
-      // body: IndexedStack(
-      //   index: currentIndex,
-      //   children: display,
-      // ),
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-          indicatorColor: Colors.purple.shade50,
+          indicatorColor: Colors.transparent,
           labelTextStyle: MaterialStateProperty.all(TextStyle(fontSize: 14, fontWeight: FontWeight.w500))
         ),
           child: NavigationBar(
@@ -89,6 +82,8 @@ class _HomePageState extends State<HomePage> {
         //       icon: Icon(Icons.account_circle_outlined),
         //       label: 'Profile' ),
         // ],
+
+
       ),
     );
   }

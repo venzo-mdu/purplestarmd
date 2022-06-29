@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/screens/profile/CartPage.dart';
+import 'package:purplestarmd/screens/profile/YTReview.dart';
 
 import '../../widgets/ShopbyCategory.dart';
 
@@ -150,7 +151,7 @@ class _HomeContentState extends State<HomeContent> {
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (content) => (CartPage())),
+                                    MaterialPageRoute(builder: (content) => (YTReview())),
                                   );
                                 }),
                           ),
@@ -187,7 +188,7 @@ class _HomeContentState extends State<HomeContent> {
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (content) => (CartPage())),
+                                    MaterialPageRoute(builder: (content) => (YTReview())),
                                   );
                                 }),
                           ),
@@ -224,7 +225,7 @@ class _HomeContentState extends State<HomeContent> {
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (content) => (CartPage())),
+                                    MaterialPageRoute(builder: (content) => (YTReview())),
                                   );
                                 }),
                           ),

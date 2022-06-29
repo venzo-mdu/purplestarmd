@@ -71,13 +71,13 @@ class WelcomeScreen extends StatelessWidget {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsets.fromLTRB(35, 30, 35, 10),
+                            padding: EdgeInsets.fromLTRB(35, 30, 50, 10),
                             child: Text(
                               'You must be at least 21 years of age to view this app.',
                               style: TextStyle(
                                   fontFamily: 'Poppins-Bold',
                                   color: mDark,
-                                  fontSize: 20,
+                                  fontSize: 17,
                                   // letterSpacing: .25,
                                   fontWeight: FontWeight.bold),
                             ),

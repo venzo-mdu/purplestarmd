@@ -34,14 +34,14 @@ class _SignInState extends State<SignIn> {
                 'Sign In',
                 style: TextStyle(
                     fontFamily: 'Poppins',
-                    fontSize: 17,
+                    fontSize: 18.5,
                     fontWeight: FontWeight.bold),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Padding(
-                    padding: EdgeInsets.fromLTRB(22, 20, 0, 0),
+                    padding: EdgeInsets.fromLTRB(22, 30, 0, 0),
                     child: Text(
                       'phone or email',
                       style: TextStyle(
@@ -128,7 +128,7 @@ class _SignInState extends State<SignIn> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 80),
+                    padding: const EdgeInsets.symmetric(horizontal: 80, vertical: 18),
                     child: InkWell(
                       onTap: () {
                         Navigator.push(
@@ -144,7 +144,7 @@ class _SignInState extends State<SignIn> {
                             TextSpan(text: 'Not a Member? '),
                             TextSpan(
                                 text: 'Sign Up',
-                                style: TextStyle(color: mGreen, fontFamily: 'Poppins', fontSize: 13, fontWeight: FontWeight.w600)),
+                                style: TextStyle(color: mGreen, fontFamily: 'Poppins', fontSize: 13, fontWeight: FontWeight.w600,)),
                           ],
                         ),
                       ),
@@ -178,7 +178,7 @@ class _SignInState extends State<SignIn> {
                             fontSize: 15,
                             fontFamily: 'Poppins',
                             color: Colors.black,
-                            fontWeight: FontWeight.bold
+                            fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),

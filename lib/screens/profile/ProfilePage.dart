@@ -36,14 +36,14 @@ class _ProfilePageState extends State<ProfilePage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsets.fromLTRB(20, 30, 0, 5),
+              padding: EdgeInsets.fromLTRB(25, 30, 0, 5),
               child: Text(
                 'Hi Pat',
                 style: TextStyle(fontSize: 30, fontFamily: 'BebasNeue'),
               ),
             ),
             Divider(
-              color: Colors.black54,
+              color: Colors.black45,
               indent: 0,
               height: 1,
             ),
@@ -51,15 +51,15 @@ class _ProfilePageState extends State<ProfilePage> {
               title: Text(
                 'Shop',
                 style: TextStyle(
-                    fontSize: 15,
-                    fontFamily: 'Poppins',
+                    fontSize: 17,
+                    fontFamily: 'Poppins-Bold',
                     color: Colors.black,
                     fontWeight: FontWeight.bold),
               ),
               children: <Widget>[
                 for (var profileShopCategory in profileShop)
                   Padding(
-                    padding: EdgeInsets.fromLTRB(40, 5, 0, 10),
+                    padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
                     child: Column(
                       children: [
                         InkWell(
