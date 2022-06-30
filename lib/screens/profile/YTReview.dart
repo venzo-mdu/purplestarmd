@@ -32,9 +32,6 @@ class _YTReviewState extends State<YTReview> {
         loop: false,
         autoPlay: true
       ),
-
-
-
     );
   }
 
