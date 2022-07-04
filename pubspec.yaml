@@ -25,10 +25,13 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   youtube_player_flutter: ^8.1.0
   http: ^0.13.4
+  get:
+
 
 flutter:
-
   uses-material-design: true
+
+
 
   fonts:
    - family: Poppins
@@ -58,3 +61,4 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/json/

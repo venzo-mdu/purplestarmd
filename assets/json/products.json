@@ -1,0 +1,262 @@
+[
+  {
+    "productId": 1,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/92c952",
+    "strains": "Sativa",
+    "price": "5.50",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 2,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/771796",
+    "strains": "Indica",
+    "price": "51.00",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 3,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/24f355",
+    "strains": "Hybrid Sativa",
+    "price": "9.00",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 4,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/d32776",
+    "strains": "Hybrid Indica",
+    "price": "7.25",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 5,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/f66b97",
+    "strains": "High CBD",
+    "price": "7.50",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 6,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/56a8c2",
+    "strains": "Hybrid",
+    "price": "4.50",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 7,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/b0f7cc",
+    "strains": "Hybrid",
+    "price": "2.25",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 8,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/54176f",
+    "strains": "Mixed",
+    "price": "12.50",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 9,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/51aa97",
+    "strains": "Sativa",
+    "price": "10.50",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 10,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/810b14",
+    "strains": "Indica",
+    "price": "3.50",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 11,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/1ee8a4",
+    "strains": "Hybrid Sativa",
+    "price": "14.00",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 12,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/66b7d2",
+    "strains": "Hybrid Indica",
+    "price": "19.25",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 13,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/197d29",
+    "strains": "High CBD",
+    "price": "15.25",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 14,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/61a65",
+    "strains": "Hybrid",
+    "price": "5.25",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 15,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/fdf73e",
+    "strains": "Mixed",
+    "price": "5.50",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 16,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/9c184f",
+    "strains": "Sativa",
+    "price": "4.50",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 17,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/1fe46f",
+    "strains": "Indica",
+    "price": "4.00",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 18,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/56acb2",
+    "strains": "Hybrid Sativa",
+    "price": "8.25",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 19,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/8985dc",
+    "strains": "Hybrid Indica",
+    "price": "10.00",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  },
+  {
+    "productId": 20,
+    "title": "DabTabs 150mg",
+    "made": "Midsfactory",
+    "productImageUrl": "https://via.placeholder.com/600/92c952",
+    "strains": "High CBD",
+    "price": "6.50",
+    "productType": {
+      "type1": "Gelato (H)",
+      "type2": "GDP (I)",
+      "type3": "Pineapple Jack (S)"
+    }
+  }
+]
