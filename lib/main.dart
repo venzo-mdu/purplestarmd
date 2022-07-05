@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:purplestarmd/screens/HomePage.dart';
-import 'package:purplestarmd/screens/PushNotification.dart';
-import 'package:purplestarmd/screens/profile/SignIn.dart';
-import 'constants.dart';
 import 'package:purplestarmd/WelcomeScreen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(MyApp());
+void main(){
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);

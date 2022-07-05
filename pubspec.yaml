@@ -26,6 +26,9 @@ dev_dependencies:
   youtube_player_flutter: ^8.1.0
   http: ^0.13.4
   get:
+  cloud_firestore: ^3.2.1
+  firebase_auth: ^3.4.1
+  firebase_core: ^1.19.1
 
 
 flutter:

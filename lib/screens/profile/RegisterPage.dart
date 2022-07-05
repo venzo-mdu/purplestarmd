@@ -1,11 +1,10 @@
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/screens/profile/CartPage.dart';
-import 'package:purplestarmd/screens/profile/ProfilePage.dart';
-import 'package:purplestarmd/screens/profile/Register.dart';
 import 'package:purplestarmd/screens/profile/SignIn.dart';
-
 import '../../constants.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -21,7 +20,8 @@ class _RegisterPageState extends State<RegisterPage> {
   bool visiblePassword = false;
   bool value = false;
 
-
+  // final TextEditingController emailController = TextEditingController();
+  // final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {

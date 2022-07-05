@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "295146705274",
-    "project_id": "purple-star",
-    "storage_bucket": "purple-star.appspot.com"
+    "project_number": "268819900039",
+    "project_id": "purplestarmd-a1f9b",
+    "storage_bucket": "purplestarmd-a1f9b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:295146705274:android:86f75db8fbe2dd84b986c3",
+        "mobilesdk_app_id": "1:268819900039:android:2c11493f927ab3837b7a22",
         "android_client_info": {
           "package_name": "com.venzo.purplestarmd"
         }
       },
       "oauth_client": [
         {
-          "client_id": "295146705274-grljgidg085fj4avqovr4pg831gk9235.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.venzo.purplestarmd",
-            "certificate_hash": "e0a53498a4a88028ddf2d63a307024e29fcc864b"
-          }
-        },
-        {
-          "client_id": "295146705274-h6rlr014mo8cg68fvgavbh9v857rr7b8.apps.googleusercontent.com",
+          "client_id": "268819900039-bvafemi0mdemqjshmr0m9nrdm5sas1uc.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBFoBP5Zrz9I6PYTCv_dU9iZpCNwK82GgU"
+          "current_key": "AIzaSyCv-sCZ4cDHuGDkR4et36jBfZlDzBWfCKU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "295146705274-h6rlr014mo8cg68fvgavbh9v857rr7b8.apps.googleusercontent.com",
+              "client_id": "268819900039-bvafemi0mdemqjshmr0m9nrdm5sas1uc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

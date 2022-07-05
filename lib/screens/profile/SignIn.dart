@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/constants.dart';
 import 'package:purplestarmd/screens/profile/UserPassword.dart';
@@ -6,12 +8,6 @@ import 'RegisterPage.dart';
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
 
-  // class SendData {
-  // final String email;
-  //
-  // SendData(this.email);
-  // }
-
   @override
   State<SignIn> createState() => _SignInState();
 }
@@ -19,6 +15,11 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   String? email;
+
+  final TextEditingController emailController = TextEditingController();
+  FirebaseAuth auth = FirebaseAuth.instance;
+
+
 
 
   @override
@@ -102,9 +103,9 @@ class _SignInState extends State<SignIn> {
                       child: ElevatedButton(
 
                         onPressed: () {
-                          if(_formKey.currentState!.validate()) {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => UserPassword()));
-                          }
+                          // if(_formKey.currentState!.validate()) {
+                          //   Navigator.push(context, MaterialPageRoute(builder: (context) => UserPassword()));
+                          // }
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
@@ -209,5 +210,20 @@ class _SignInState extends State<SignIn> {
       ),
     );
   }
+
+
+  void signIn(String email) async{
+    if(_formKey.currentState!.validate()) {
+      await auth
+          .signInWithEmailAndPassword(email: email, )
+          .then((uid)=> {
+            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>UserPassword())),
+          }
+        );
+    }
+  }
+
+
 }
+
 

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-List<Product> postFromJson(String str) =>
-List<Product>.from(json.decode(str).map((x) => Product.fromMap(x)));
+List<SalesCategory> postFromJson(String str) =>
+List<SalesCategory>.from(json.decode(str).map((x) => SalesCategory.fromMap(x)));
 
 class ProductType {
   String type1;
@@ -19,8 +19,8 @@ class ProductType {
   }
 }
 
-class Product {
-  Product({
+class SalesCategory {
+  SalesCategory({
     required this.productId,
     required this.title,
     required this.made,
@@ -38,7 +38,7 @@ class Product {
   String price;
   ProductType productType;
 
-  factory Product.fromMap(Map<String, dynamic> json) => Product(
+  factory SalesCategory.fromMap(Map<String, dynamic> json) => SalesCategory(
       productId: json["productId"],
       title: json["title"],
       made: json["made"],
