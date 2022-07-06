@@ -15,7 +15,7 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   String? email;
-
+  final _emailTextController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
