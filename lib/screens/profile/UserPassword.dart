@@ -96,9 +96,9 @@ class _UserPasswordState extends State<UserPassword> {
                     width: MediaQuery.of(context).size.width,
                     child: ElevatedButton(
                       onPressed: () {
-                        if(_formKey.currentState!.validate()) {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage()));
-                        }
+                        // if(_formKey.currentState!.validate()) {
+                        //   Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(user: null,)));
+                        // }
                       },
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(

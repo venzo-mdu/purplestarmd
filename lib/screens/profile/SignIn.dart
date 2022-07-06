@@ -16,11 +16,6 @@ class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   String? email;
 
-  final TextEditingController emailController = TextEditingController();
-  FirebaseAuth auth = FirebaseAuth.instance;
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -103,9 +98,9 @@ class _SignInState extends State<SignIn> {
                       child: ElevatedButton(
 
                         onPressed: () {
-                          // if(_formKey.currentState!.validate()) {
-                          //   Navigator.push(context, MaterialPageRoute(builder: (context) => UserPassword()));
-                          // }
+                          if(_formKey.currentState!.validate()) {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => UserPassword()));
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           shape: RoundedRectangleBorder(
@@ -211,17 +206,6 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-
-  void signIn(String email) async{
-    if(_formKey.currentState!.validate()) {
-      await auth
-          .signInWithEmailAndPassword(email: email, )
-          .then((uid)=> {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>UserPassword())),
-          }
-        );
-    }
-  }
 
 
 }

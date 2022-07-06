@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/screens/profile/CartPage.dart';
 import 'package:purplestarmd/widgets/CustomAppBar.dart';
@@ -7,7 +8,8 @@ import '../../widgets/ShopbyCategory.dart';
 import 'Concentrates.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+  const ProfilePage({Key? key, required this.user}) : super(key: key);
+  final User user;
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -25,7 +27,14 @@ class _ProfilePageState extends State<ProfilePage> {
     'Accessories',
     'Sales'
   ];
-  var profileMenu = ['Account', 'Order History', 'Blog', 'About'];
+  var profileMenu = ['Account', 'Order History', 'Blog', 'About', 'Log Out'];
+  late User _currentUser;
+
+  @override
+  void initState() {
+    _currentUser = widget.user;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +47,7 @@ class _ProfilePageState extends State<ProfilePage> {
             Padding(
               padding: EdgeInsets.fromLTRB(25, 30, 0, 5),
               child: Text(
-                'Hi Pat',
+                'Hi ${_currentUser.displayName}',
                 style: TextStyle(fontSize: 30, fontFamily: 'BebasNeue'),
               ),
             ),
@@ -136,7 +145,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       InkWell(
                         onTap: (){
-                          // ['Account', 'Order History', 'Blog', 'About']
+                          // ['Account', 'Order History', 'Blog', 'About', 'Log Out']
                           if(menus == 'Account') {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => Concentrates()));
                           }
@@ -144,6 +153,9 @@ class _ProfilePageState extends State<ProfilePage> {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => Concentrates()));
                           }
                           else if(menus == 'Blog') {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Concentrates()));
+                          }
+                          else if(menus == 'About') {
                             Navigator.push(context, MaterialPageRoute(builder: (context) => Concentrates()));
                           }
                           else {
