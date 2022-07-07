@@ -2,11 +2,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/screens/HomePage.dart';
 import 'package:purplestarmd/screens/profile/CartPage.dart';
+import 'package:purplestarmd/screens/profile/OrderHistory.dart';
+import 'package:purplestarmd/screens/profile/category/Edibles.dart';
 import 'package:purplestarmd/widgets/CustomAppBar.dart';
 import 'package:purplestarmd/widgets/CustomBottomNavigation.dart';
 
 import '../../widgets/ShopbyCategory.dart';
-import 'Concentrates.dart';
+import 'category/Accessories.dart';
+import 'category/Concentrates.dart';
+import 'category/Flowers.dart';
+import 'category/Prerolls.dart';
+import 'category/Sales.dart';
+import 'category/Tinctures.dart';
+import 'category/Topicals.dart';
+import 'category/VapePens.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key, required this.user}) : super(key: key);
@@ -85,56 +94,55 @@ class _ProfilePageState extends State<ProfilePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates(
-                                        pageTitle: profileShopCategory)),
+                                    builder: (context) => Edibles(pageTitle: profileShopCategory)),
                               );
                             } else if (profileShopCategory == 'Flowers') {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates(
+                                    builder: (context) => Flowers(
                                         pageTitle: profileShopCategory)),
                               );
                             } else if (profileShopCategory == 'Prerolls') {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates(
+                                    builder: (context) => Prerolls(
                                         pageTitle: profileShopCategory)),
                               );
                             } else if (profileShopCategory == 'Tinctures') {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates(
+                                    builder: (context) => Tinctures(
                                         pageTitle: profileShopCategory)),
                               );
                             } else if (profileShopCategory == 'Topicals') {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates(
+                                    builder: (context) => Topicals(
                                         pageTitle: profileShopCategory)),
                               );
                             } else if (profileShopCategory == 'Vape Pens') {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates(
+                                    builder: (context) => VapePens(
                                         pageTitle: profileShopCategory)),
                               );
                             } else if (profileShopCategory == 'Accessories') {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates(
+                                    builder: (context) => Accessories(
                                         pageTitle: profileShopCategory)),
                               );
                             } else if (profileShopCategory == 'Sales') {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates(
+                                    builder: (context) => Sales(
                                         pageTitle: profileShopCategory)),
                               );
                             }
@@ -169,22 +177,22 @@ class _ProfilePageState extends State<ProfilePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates()));
+                                    builder: (context) => OrderHistory()));
                           } else if (menus == 'Order History') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates()));
+                                    builder: (context) => OrderHistory()));
                           } else if (menus == 'Blog') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates()));
+                                    builder: (context) => OrderHistory()));
                           } else if (menus == 'About') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates()));
+                                    builder: (context) => OrderHistory()));
                           } else {
                             // Navigator.push(
                             //     context,

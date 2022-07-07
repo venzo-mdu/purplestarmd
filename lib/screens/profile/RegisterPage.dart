@@ -32,7 +32,6 @@ class _RegisterPageState extends State<RegisterPage> {
     if(user != null) {
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfilePage(user: user)));
     }
-
     return firebaseApp;
   }
 
