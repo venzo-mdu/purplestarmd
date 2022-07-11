@@ -24,14 +24,41 @@ class _EdiblesState extends State<Edibles> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(),
-      body: Column(
-        children: [
-          Center(
-            child: Text('$_title'),
-          ),
-          // ProductHeading(title: widget.pageTitle),
-          // CartPage(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.only(left: 20, right: 20, top: 20),
+              child: Row(
+                children: [
+                  Text(
+                    '$_title',
+                    style: TextStyle(fontSize: 30, fontFamily: 'BebasNeue'),
+                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: 125),
+                        child: InkWell(
+                          onTap: () {},
+                          child: Icon(Icons.filter_alt_outlined),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: InkWell(
+                          onTap: () {},
+                          child: Icon(Icons.tune_outlined),
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            // CartPage(),
+          ],
+        ),
       ),
     );
   }

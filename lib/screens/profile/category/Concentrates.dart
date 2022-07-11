@@ -56,7 +56,7 @@ class _ConcentratesState extends State<Concentrates> {
                 ],
               ),
             ),
-            CartPage(),
+            // CartPage(),
           ],
         ),
       ),

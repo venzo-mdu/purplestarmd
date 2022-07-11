@@ -94,7 +94,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Edibles(pageTitle: profileShopCategory)),
+                                    builder: (context) => Edibles(
+                                        pageTitle: profileShopCategory)),
                               );
                             } else if (profileShopCategory == 'Flowers') {
                               Navigator.push(
@@ -142,8 +143,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Sales(
-                                        pageTitle: profileShopCategory)),
+                                    builder: (context) =>
+                                        Sales(pageTitle: profileShopCategory)),
                               );
                             }
                           },
@@ -205,9 +206,12 @@ class _ProfilePageState extends State<ProfilePage> {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 title: Center(
-                                    child: Text('Log out of Purple Star?',
-                                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                                    ),
+                                  child: Text(
+                                    'Log out of Purple Star?',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                 ),
                                 actions: [
                                   TextButton(
@@ -217,15 +221,32 @@ class _ProfilePageState extends State<ProfilePage> {
                                         children: [
                                           // Divider(color: Colors.grey),
                                           TextButton(
-                                            child: Text('Log out', style: TextStyle(color: Colors.red, fontWeight: FontWeight.w500, fontSize: 18),),
+                                            child: Text(
+                                              'Log out',
+                                              style: TextStyle(
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 18),
+                                            ),
                                             onPressed: () async {
-                                              await FirebaseAuth.instance.signOut();
-                                              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>HomePage()));
+                                              await FirebaseAuth.instance
+                                                  .signOut();
+                                              Navigator.of(context)
+                                                  .pushReplacement(
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              HomePage()));
                                             },
                                           ),
                                           // Divider(color: Colors.grey),
                                           TextButton(
-                                            child: Text('Cancel', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),),
+                                            child: Text(
+                                              'Cancel',
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.black),
+                                            ),
                                             onPressed: () {
                                               Navigator.pop(context);
                                             },
