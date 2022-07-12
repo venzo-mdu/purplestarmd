@@ -38,14 +38,14 @@ class _ConcentratesState extends State<Concentrates> {
                   Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 125),
+                        padding: EdgeInsets.only(left: 130),
                         child: InkWell(
                           onTap: () {},
                           child: Icon(Icons.filter_alt_outlined),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 10),
+                        padding: const EdgeInsets.only(left: 25),
                         child: InkWell(
                           onTap: () {},
                           child: Icon(Icons.tune_outlined),
@@ -56,9 +56,10 @@ class _ConcentratesState extends State<Concentrates> {
                 ],
               ),
             ),
-            // CartPage(),
+            CartPage(),
           ],
         ),
+
       ),
     );
   }

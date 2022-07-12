@@ -1,5 +1,8 @@
 import 'dart:convert';
+import 'dart:io';
+import 'dart:math';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/models/SaleCategories.dart';
 import 'package:http/http.dart' as http;
@@ -8,6 +11,8 @@ import 'package:purplestarmd/screens/ProceedCart.dart';
 import 'package:purplestarmd/screens/SalePage.dart';
 import '../../models/DropDown.dart';
 import '../../models/SaleServices.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -19,16 +24,31 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   Future<List<SalesCategory>>? futureProduct;
 
+  // final _auth = FirebaseAuth.instance;
+  // // FirebaseUser loggedInUser;
+  // FirebaseAuth? loggedInUser;
+
+  // void getCurrentUser() async {
+  //   try() {
+  //     final user = _auth.currentUser;
+  //     if(user != null){
+  //       loggedInUser = user;
+  //     }
+  //   } catch(e) {
+  //     print(e);
+  //   }
+  // }
+
   @override
   void initState() {
     super.initState();
     futureProduct = fetchProduct();
+    // getCurrentUser();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: FutureBuilder<List<SalesCategory>>(
+    return FutureBuilder<List<SalesCategory>>(
           future: futureProduct,
           builder: (context, snapshot) {
           if (snapshot.hasData) {
@@ -37,10 +57,10 @@ class _CartPageState extends State<CartPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(5, 0, 5, 5),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 5, 5),
                       child: Text(
                         'Showing ' + snapshot.data!.length.toString() + ' results',
-                        style: const TextStyle(fontFamily: 'Poppins', fontSize: 18),
+                        style: const TextStyle(fontFamily: 'Poppins', fontSize: 15, fontWeight: FontWeight.w500),
                     ),
                   ),
                   const Divider(
@@ -156,11 +176,15 @@ class _CartPageState extends State<CartPage> {
           return const Center(child: CircularProgressIndicator());
         }
       },
-    ));
+    );
   }
 }
 
 AddToBasket(BuildContext context, SalesCategory product) async {
+
+  // final _firestore = FirebaseFirestore.instance;
+  // final String checkOut;
+  
   showModalBottomSheet(
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
@@ -221,14 +245,20 @@ AddToBasket(BuildContext context, SalesCategory product) async {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(shape: StadiumBorder()),
+                    
+                    style: ElevatedButton.styleFrom(shape: StadiumBorder(),primary: Color(0xFF562c8a)),
                     child: const Text('Proceed to checkout',
                         style:
                             TextStyle(fontFamily: 'BebasNeue', fontSize: 17)),
                     onPressed: () {
+                      // _firestore.collection('checkout').add({
+                      //   'title': product.title,
+                      //   'productImageUrl': product.productImageUrl,
+                      //   'made': product.made,
+                      // });
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => ProceedCart()),
+                        MaterialPageRoute(builder: (context) => ProceedCart(cartTitle: product.title, cartImage: product.productImageUrl, cartprice: product.price,)),
                       );
                     },
                   ),
@@ -248,7 +278,7 @@ AddToBasket(BuildContext context, SalesCategory product) async {
                               TextStyle(fontFamily: 'BebasNeue', fontSize: 17)),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => ProceedCart()));
+                            builder: (context) => CartPage()));
                       }),
                 ),
                 SizedBox(

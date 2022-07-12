@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/screens/profile/SignIn.dart';
 import 'package:purplestarmd/widgets/CustomAppBar.dart';
@@ -7,7 +8,11 @@ import '../../constants.dart';
 import 'ProfilePage.dart';
 
 class UserPassword extends StatefulWidget {
-  const UserPassword({Key? key}) : super(key: key);
+  const UserPassword({
+    Key? key,
+    required this.email,
+  }) : super(key: key);
+  final String email;
 
   @override
   State<UserPassword> createState() => _UserPasswordState();
@@ -16,6 +21,26 @@ class UserPassword extends StatefulWidget {
 class _UserPasswordState extends State<UserPassword> {
   final _formKey = GlobalKey<FormState>();
   String? password;
+  String? _email;
+  final _auth = FirebaseAuth.instance;
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if(user != null) {
+        loggedInUser = user;
+        print(loggedInUser.)
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    _email = widget.email;
+    super.initState();
+  }
+
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +51,7 @@ class _UserPasswordState extends State<UserPassword> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Text('$_email'),
             Text(
               'Sign In',
               style: TextStyle(
@@ -47,21 +73,21 @@ class _UserPasswordState extends State<UserPassword> {
                         color: mPrimaryColor),
                   ),
                 ),
-
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 8, horizontal: 0),
                   child: Form(
                     key: _formKey,
                     child: TextFormField(
+                      controller: passwordController,
                       keyboardType: TextInputType.visiblePassword,
                       validator: (value) {
-                        if(value?.isEmpty ?? true) {
+                        if (value?.isEmpty ?? true) {
                           return 'Please your valid Password';
                         }
                         return null;
                       },
-                      onSaved: (String? value){
-                        password = value;
+                      onSaved: (String? value) {
+                        passwordController.text = value!;
                       },
                       obscureText: true,
                       style: TextStyle(
@@ -88,14 +114,30 @@ class _UserPasswordState extends State<UserPassword> {
                     ),
                   ),
                 ),
-
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 25),
                   child: SizedBox(
                     height: 50,
-                    width: MediaQuery.of(context).size.width,
+                    width: MediaQuery
+                        .of(context)
+                        .size
+                        .width,
                     child: ElevatedButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        try{
+                          final user = await _auth.signInWithEmailAndPassword(
+                              email: _email, password: passwordController.text);
+                          if (user != null) {
+                            Navigator.pushAndRemoveUntil(MaterialPageRoute(
+                                builder: (context) => ProfilePage(user: user)),
+                                ModalRoute.withName('/');
+                            );
+                          }
+                        } catch(e) {
+                          print(e);
+                        }
+
+                        // signIn(_email!, passwordController.text);
                         // if(_formKey.currentState!.validate()) {
                         //   Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(user: null,)));
                         // }
@@ -113,13 +155,13 @@ class _UserPasswordState extends State<UserPassword> {
                         ),
                       ),
                       child: Text(
-                        'SUBMIT',style: TextStyle(fontFamily: 'BebasNeue', fontSize: 20),
+                        'SUBMIT',
+                        style: TextStyle(fontFamily: 'BebasNeue', fontSize: 20),
                         // textScaleFactor: 1.5,
                       ),
                     ),
                   ),
                 ),
-
               ],
             )
           ],
@@ -129,3 +171,4 @@ class _UserPasswordState extends State<UserPassword> {
     );
   }
 }
+

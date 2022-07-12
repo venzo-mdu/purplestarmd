@@ -15,7 +15,7 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   String? email;
-  final _emailTextController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +52,7 @@ class _SignInState extends State<SignIn> {
                     child: Form(
                       key: _formKey,
                       child: TextFormField (
+                        controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         validator: (value) {
                           if(value?.isEmpty ?? true) {
@@ -63,7 +64,7 @@ class _SignInState extends State<SignIn> {
                           return null;
                         },
                         onSaved: (String? value) {
-                          email = value;
+                          emailController.text = value!;
                         },
                         style: TextStyle(
                           fontFamily: 'Poppins',
@@ -91,7 +92,6 @@ class _SignInState extends State<SignIn> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 25),
-
                     child: SizedBox(
                       height: 50,
                       width: MediaQuery.of(context).size.width,
@@ -99,7 +99,9 @@ class _SignInState extends State<SignIn> {
 
                         onPressed: () {
                           if(_formKey.currentState!.validate()) {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => UserPassword()));
+
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => UserPassword(email: emailController.text)));
+                            print(emailController.text);
                           }
                         },
                         style: ElevatedButton.styleFrom(

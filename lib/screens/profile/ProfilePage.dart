@@ -178,22 +178,22 @@ class _ProfilePageState extends State<ProfilePage> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => OrderHistory()));
+                                    builder: (context) => CartPage()));
                           } else if (menus == 'Order History') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => OrderHistory()));
+                                    builder: (context) => CartPage()));
                           } else if (menus == 'Blog') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => OrderHistory()));
+                                    builder: (context) => CartPage()));
                           } else if (menus == 'About') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => OrderHistory()));
+                                    builder: (context) => CartPage()));
                           } else {
                             // Navigator.push(
                             //     context,
