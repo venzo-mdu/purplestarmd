@@ -22,17 +22,6 @@ class _UserPasswordState extends State<UserPassword> {
   final _formKey = GlobalKey<FormState>();
   String? password;
   String? _email;
-  final _auth = FirebaseAuth.instance;
-
-  void getCurrentUser() async {
-    try {
-      final user = await _auth.currentUser();
-      if(user != null) {
-        loggedInUser = user;
-        print(loggedInUser.)
-      }
-    }
-  }
 
   @override
   void initState() {
@@ -40,7 +29,13 @@ class _UserPasswordState extends State<UserPassword> {
     super.initState();
   }
 
+  // String emailAddress = _email;
+
+  final _auth = FirebaseAuth.instance;
+  final TextEditingController emailAddress = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  String? errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -124,39 +119,53 @@ class _UserPasswordState extends State<UserPassword> {
                         .width,
                     child: ElevatedButton(
                       onPressed: () async {
-                        try{
-                          final user = await _auth.signInWithEmailAndPassword(
-                              email: _email, password: passwordController.text);
-                          if (user != null) {
-                            Navigator.pushAndRemoveUntil(MaterialPageRoute(
-                                builder: (context) => ProfilePage(user: user)),
-                                ModalRoute.withName('/');
-                            );
+                        if (_formKey.currentState!.validate()) {
+                          try{
+                            await _auth.signInWithEmailAndPassword(email: _email, password: passwordController.text).then((uid) => {
+                              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=> ProfilePage(user: user)))
+                            });
+                          } catch(e){
+                            print(e);
                           }
-                        } catch(e) {
-                          print(e);
                         }
 
-                        // signIn(_email!, passwordController.text);
-                        // if(_formKey.currentState!.validate()) {
-                        //   Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(user: null,)));
-                        // }
-                      },
-                      style: ElevatedButton.styleFrom(
+
+
+
+                          // try{
+                          //   final user = await _auth.signInWithEmailAndPassword(
+                          //       email: _email, password: passwordController.text);
+                          //   if (user != null) {
+                          //     Navigator.pushAndRemoveUntil(MaterialPageRoute(
+                          //         builder: (context) => ProfilePage(user: user)),
+                          //         ModalRoute.withName('/');
+                          //     );
+                          //   }
+                          // } catch(e) {
+                          //   print(e);
+                          // }
+
+                          // signIn(_email!, passwordController.text);
+                          // if(_formKey.currentState!.validate()) {
+                          //   Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(user: null,)));
+                          // }
+                        },
+                        style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(20),
                         ),
                         primary: mPrimaryColor,
                         padding:
                         EdgeInsets.symmetric(vertical: 13, horizontal: 130),
                         textStyle: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
                         ),
-                      ),
-                      child: Text(
+                        ),
+                        child: Text(
                         'SUBMIT',
-                        style: TextStyle(fontFamily: 'BebasNeue', fontSize: 20),
+                        style: TextStyle
+                        }(fontFamily: 'BebasNeue', fontSize: 20),
                         // textScaleFactor: 1.5,
                       ),
                     ),

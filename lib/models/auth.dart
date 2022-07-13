@@ -1,4 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+
+Future<void> userInfo(String Fullname) async {
+  CollectionReference users = FirebaseFirestore.instance.collection('usersData');
+  FirebaseAuth auth = FirebaseAuth.instance;
+  String uid = auth.currentUser!.uid.toString();
+  users.add({'displayName': Fullname, 'uid': uid,});
+  return;
+}
+
+
 
 class FireAuth {
   // For registering a new user
@@ -19,6 +31,9 @@ class FireAuth {
       user = userCredential.user;
       await user!.updateProfile(displayName: name);
       await user.reload();
+
+      userInfo(name);
+
       user = auth.currentUser;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {

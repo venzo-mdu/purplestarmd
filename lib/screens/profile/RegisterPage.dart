@@ -5,6 +5,7 @@ import 'package:purplestarmd/screens/profile/CartPage.dart';
 import 'package:purplestarmd/screens/profile/SignIn.dart';
 import '../../constants.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'ProfilePage.dart';
 
@@ -26,11 +27,38 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
 
+
+
+  // final _firestore = FirebaseFirestore.instance;
+
+  // Future<void> adduser() async {
+  //   return await userData
+  //       .add({
+  //         'email': _emailTextController.text,
+  //         'name': _nameTextController.text,
+  //         'password': _passwordTextController.text,
+  //       })
+  //       .then((value) => print('User Added'))
+  //       .catchError((error) => print("Failed to add user: $error"));
+  // }
+
+
+
+
   Future<FirebaseApp> _initializeFirebase() async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
+    // CollectionReference userInfo = FirebaseFirestore.instance.collection('userData');
     User? user = FirebaseAuth.instance.currentUser;
-    if(user != null) {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfilePage(user: user)));
+
+    // userInfo.add({
+    //   'email': _emailTextController.text,
+    //   'name': _nameTextController.text,
+    //   'password': _passwordTextController.text,
+    // });
+
+    if (user != null) {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => ProfilePage(user: user)));
     }
     return firebaseApp;
   }
@@ -40,8 +68,8 @@ class _RegisterPageState extends State<RegisterPage> {
     return Scaffold(
       body: FutureBuilder(
         future: _initializeFirebase(),
-        builder: (context, snapshop){
-          if(snapshop.connectionState == ConnectionState.done) {
+        builder: (context, snapshop) {
+          if (snapshop.connectionState == ConnectionState.done) {
             return SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(30, 80, 30, 30),
@@ -81,22 +109,24 @@ class _RegisterPageState extends State<RegisterPage> {
                               onSaved: (String? value) {
                                 name = value;
                               },
-                              style: TextStyle(fontFamily: 'Poppins', fontSize: 14),
+                              style: TextStyle(
+                                  fontFamily: 'Poppins', fontSize: 14),
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(10, 0, 10, 0),
                                 filled: true,
                                 fillColor: mLightGrey,
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                  BorderSide(width: 1, color: Colors.transparent),
+                                  borderSide: BorderSide(
+                                      width: 1, color: Colors.transparent),
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0)),
+                                      BorderRadius.all(Radius.circular(30.0)),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide:
-                                  BorderSide(width: 1, color: Colors.transparent),
+                                  borderSide: BorderSide(
+                                      width: 1, color: Colors.transparent),
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0)),
+                                      BorderRadius.all(Radius.circular(30.0)),
                                 ),
                                 hintText: 'John Doe',
                               ),
@@ -128,7 +158,8 @@ class _RegisterPageState extends State<RegisterPage> {
                                 if (value?.isEmpty ?? true) {
                                   return 'Please enter your E-mail';
                                 }
-                                if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                                if (!RegExp(
+                                        "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
                                     .hasMatch(value!)) {
                                   return 'Please a valid Email';
                                 }
@@ -137,22 +168,24 @@ class _RegisterPageState extends State<RegisterPage> {
                               onSaved: (String? value) {
                                 email = value;
                               },
-                              style: TextStyle(fontFamily: 'Poppins', fontSize: 14),
+                              style: TextStyle(
+                                  fontFamily: 'Poppins', fontSize: 14),
                               decoration: InputDecoration(
-                                contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(10, 0, 10, 0),
                                 filled: true,
                                 fillColor: mLightGrey,
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide:
-                                  BorderSide(width: 1, color: Colors.transparent),
+                                  borderSide: BorderSide(
+                                      width: 1, color: Colors.transparent),
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0)),
+                                      BorderRadius.all(Radius.circular(30.0)),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide:
-                                  BorderSide(width: 1, color: Colors.transparent),
+                                  borderSide: BorderSide(
+                                      width: 1, color: Colors.transparent),
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0)),
+                                      BorderRadius.all(Radius.circular(30.0)),
                                 ),
                                 hintText: 'johndoe@email.com',
                               ),
@@ -177,20 +210,25 @@ class _RegisterPageState extends State<RegisterPage> {
                             ),
                           ),
                           TextField(
-                            style: TextStyle(fontFamily: 'Poppins', fontSize: 14),
+                            // validator: (){},
+                            // controller: _phoneTextController,
+                            style:
+                                TextStyle(fontFamily: 'Poppins', fontSize: 14),
                             decoration: InputDecoration(
                               contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                               filled: true,
                               fillColor: mLightGrey,
                               enabledBorder: OutlineInputBorder(
-                                borderSide:
-                                BorderSide(width: 1, color: Colors.transparent),
-                                borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                                borderSide: BorderSide(
+                                    width: 1, color: Colors.transparent),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30.0)),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                BorderSide(width: 1, color: Colors.transparent),
-                                borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                                borderSide: BorderSide(
+                                    width: 1, color: Colors.transparent),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30.0)),
                               ),
                               hintText: '415 456 7890',
                             ),
@@ -228,31 +266,32 @@ class _RegisterPageState extends State<RegisterPage> {
                                   fontFamily: 'Poppins', fontSize: 14),
                               decoration: InputDecoration(
                                 contentPadding:
-                                const EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                    const EdgeInsets.fromLTRB(10, 0, 10, 0),
                                 filled: true,
                                 fillColor: mLightGrey,
                                 enabledBorder: const OutlineInputBorder(
-                                  borderSide:
-                                  BorderSide(width: 1, color: Colors.transparent),
+                                  borderSide: BorderSide(
+                                      width: 1, color: Colors.transparent),
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0)),
+                                      BorderRadius.all(Radius.circular(30.0)),
                                 ),
                                 focusedBorder: const OutlineInputBorder(
-                                  borderSide:
-                                  BorderSide(width: 1, color: Colors.transparent),
+                                  borderSide: BorderSide(
+                                      width: 1, color: Colors.transparent),
                                   borderRadius:
-                                  BorderRadius.all(Radius.circular(30.0)),
+                                      BorderRadius.all(Radius.circular(30.0)),
                                 ),
                                 hintText: 'At least 8 characters ',
                                 suffixIcon: IconButton(
                                   icon: Icon(
                                     Icons.remove_red_eye,
-                                    color:
-                                    visiblePassword ? mPrimaryColor : mLightGrey,
+                                    color: visiblePassword
+                                        ? mPrimaryColor
+                                        : mLightGrey,
                                   ),
                                   onPressed: () {
-                                    setState(
-                                            () => visiblePassword = !visiblePassword);
+                                    setState(() =>
+                                        visiblePassword = !visiblePassword);
                                   },
                                 ),
                               ),
@@ -283,15 +322,31 @@ class _RegisterPageState extends State<RegisterPage> {
                       padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
                       child: InkWell(
                         onTap: () async {
+                          // _firestore .collection('user').add({
+                          //   'email': _emailTextController.text,
+                          //   'name': _nameTextController.text,
+                          //   'password': _passwordTextController.text,
+                          //   'phone': userPhone
+                          // });
+                          // userData.add({
+                          //   'email': _emailTextController.text,
+                          //   'name': _nameTextController.text,
+                          //   'password': _passwordTextController.text,
+                          // });
+
+
                           if (_formKey.currentState!.validate()) {
-                            User? user = await FireAuth.registerUsingEmailPassword(
+                            User? user =
+                                await FireAuth.registerUsingEmailPassword(
                               name: _nameTextController.text,
                               email: _emailTextController.text,
                               password: _passwordTextController.text,
                             );
-                            if(user != null) {
-                              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => ProfilePage(user: user),
-                              ),
+                            if (user != null) {
+                              Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(
+                                  builder: (context) => ProfilePage(user: user),
+                                ),
                                 ModalRoute.withName('/'),
                               );
                             }
