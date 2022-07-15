@@ -3,10 +3,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 Future<void> userInfo(String Fullname) async {
-  CollectionReference users = FirebaseFirestore.instance.collection('usersData');
+  CollectionReference users = FirebaseFirestore.instance.collection('usersInfo');
   FirebaseAuth auth = FirebaseAuth.instance;
   String uid = auth.currentUser!.uid.toString();
-  users.add({'displayName': Fullname, 'uid': uid,});
+  users.add({'displayName': Fullname, 'uid': uid, });
   return;
 }
 
@@ -21,7 +21,6 @@ class FireAuth {
   }) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User? user;
-
     try {
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
         email: email,
@@ -68,7 +67,6 @@ class FireAuth {
         print('Wrong password provided.');
       }
     }
-
     return user;
   }
 

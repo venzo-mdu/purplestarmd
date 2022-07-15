@@ -6,7 +6,6 @@ import 'package:purplestarmd/screens/profile/SignIn.dart';
 import '../../constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'ProfilePage.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -20,41 +19,29 @@ class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
   String? email;
   String? name;
+  int? phone;
   bool value = false;
   bool visiblePassword = false;
 
   final _nameTextController = TextEditingController();
   final _emailTextController = TextEditingController();
+  final _phoneTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
-
-
-
-  // final _firestore = FirebaseFirestore.instance;
-
-  // Future<void> adduser() async {
-  //   return await userData
-  //       .add({
-  //         'email': _emailTextController.text,
-  //         'name': _nameTextController.text,
-  //         'password': _passwordTextController.text,
-  //       })
-  //       .then((value) => print('User Added'))
-  //       .catchError((error) => print("Failed to add user: $error"));
-  // }
-
 
 
 
   Future<FirebaseApp> _initializeFirebase() async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
-    // CollectionReference userInfo = FirebaseFirestore.instance.collection('userData');
+
+    CollectionReference userInfo = FirebaseFirestore.instance.collection('userInfo');
     User? user = FirebaseAuth.instance.currentUser;
 
-    // userInfo.add({
-    //   'email': _emailTextController.text,
-    //   'name': _nameTextController.text,
-    //   'password': _passwordTextController.text,
-    // });
+    userInfo.add({
+      'email': _emailTextController.text,
+      'name': _nameTextController.text,
+      'phone': _phoneTextController.text,
+      'password': _passwordTextController.text,
+    });
 
     if (user != null) {
       Navigator.of(context).pushReplacement(
@@ -195,10 +182,10 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 15),
+                      padding: EdgeInsets.only(top: 15),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        children: const [
+                        children: [
                           Padding(
                             padding: EdgeInsets.fromLTRB(15, 8, 8, 5),
                             child: Text(
@@ -209,26 +196,28 @@ class _RegisterPageState extends State<RegisterPage> {
                                   fontSize: 13),
                             ),
                           ),
-                          TextField(
-                            // validator: (){},
-                            // controller: _phoneTextController,
-                            style:
-                                TextStyle(fontFamily: 'Poppins', fontSize: 14),
+                          TextFormField(
+                            controller: _phoneTextController,
+                            keyboardType: TextInputType.phone,
+                            validator: (value) {},
+                            style: TextStyle(
+                                fontFamily: 'Poppins', fontSize: 14),
                             decoration: InputDecoration(
-                              contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              contentPadding:
+                              EdgeInsets.fromLTRB(10, 0, 10, 0),
                               filled: true,
                               fillColor: mLightGrey,
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                     width: 1, color: Colors.transparent),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(30.0)),
+                                BorderRadius.all(Radius.circular(30.0)),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
                                     width: 1, color: Colors.transparent),
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(30.0)),
+                                BorderRadius.all(Radius.circular(30.0)),
                               ),
                               hintText: '415 456 7890',
                             ),
@@ -322,25 +311,38 @@ class _RegisterPageState extends State<RegisterPage> {
                       padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
                       child: InkWell(
                         onTap: () async {
-                          // _firestore .collection('user').add({
+
+                          // _firestore.collection('userInfo').add({
                           //   'email': _emailTextController.text,
                           //   'name': _nameTextController.text,
                           //   'password': _passwordTextController.text,
-                          //   'phone': userPhone
+                          //   'phone': _phoneTextController,
                           // });
-                          // userData.add({
+
+                          // userInfo.add({
                           //   'email': _emailTextController.text,
                           //   'name': _nameTextController.text,
                           //   'password': _passwordTextController.text,
+                          //
                           // });
 
 
                           if (_formKey.currentState!.validate()) {
+
+                            // userInfo.add({
+                            //   'email': _emailTextController.text,
+                            //   'name': _nameTextController.text,
+                            //   'password': _passwordTextController.text,
+                            //   'phone': _phoneTextController.text,
+                            // });
+
+
                             User? user =
                                 await FireAuth.registerUsingEmailPassword(
                               name: _nameTextController.text,
                               email: _emailTextController.text,
                               password: _passwordTextController.text,
+                                  // phone: _phoneTextController.text,
                             );
                             if (user != null) {
                               Navigator.of(context).pushAndRemoveUntil(

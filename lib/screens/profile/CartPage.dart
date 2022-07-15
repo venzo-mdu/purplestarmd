@@ -251,7 +251,7 @@ AddToBasket(BuildContext context, SalesCategory product) async {
                         style:
                             TextStyle(fontFamily: 'BebasNeue', fontSize: 17)),
                     onPressed: () {
-                      // _firestore.collection('checkout').add({
+                      // _firestore.collection('userInfo').add({
                       //   'title': product.title,
                       //   'productImageUrl': product.productImageUrl,
                       //   'made': product.made,
@@ -306,7 +306,7 @@ AddToBasket(BuildContext context, SalesCategory product) async {
                       children: [
                         Text(product.title),
                         Text(product.made),
-                        Text(product.price)
+                        Text(product.price),
                       ],
                     )
                   ],
