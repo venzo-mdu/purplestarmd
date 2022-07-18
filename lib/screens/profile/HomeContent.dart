@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:purplestarmd/screens/DealPage.dart';
 import 'package:purplestarmd/screens/profile/CartPage.dart';
 import 'package:purplestarmd/screens/profile/YTReview.dart';
 
@@ -40,7 +41,12 @@ class _HomeContentState extends State<HomeContent> {
                       padding: EdgeInsets.all(10),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
-                        child: Image(image: AssetImage('assets/images/deals-0.png'), height: 200, width: 165, fit: BoxFit.cover,),
+                        child: InkWell(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context)=> DealPage()));
+                          },
+                          child: Image(image: AssetImage('assets/images/deals-0.png'), height: 200, width: 165, fit: BoxFit.cover,),
+                        ),
                       ),
                     ),
                   ),

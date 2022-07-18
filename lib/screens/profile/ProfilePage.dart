@@ -1,12 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/screens/HomePage.dart';
+import 'package:purplestarmd/screens/profile/AccountSummary.dart';
 import 'package:purplestarmd/screens/profile/CartPage.dart';
 import 'package:purplestarmd/widgets/CustomAppBar.dart';
 import 'package:purplestarmd/widgets/CustomBottomNavigation.dart';
 
+
 import '../../widgets/ShopbyCategory.dart';
-import 'Concentrates.dart';
+import '../profile/category/Concentrates.dart';
+import 'Order-Histry.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key, required this.user}) : super(key: key);
@@ -30,6 +33,7 @@ class _ProfilePageState extends State<ProfilePage> {
   ];
   var profileMenu = ['Account', 'Order History', 'Blog', 'About', 'Logout'];
   late User _currentUser;
+  final _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -166,25 +170,28 @@ class _ProfilePageState extends State<ProfilePage> {
                         onTap: () {
                           // ['Account', 'Order History', 'Blog', 'About', 'Log Out']
                           if (menus == 'Account') {
+                            var user = _auth.currentUser;
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates()));
+                                    builder: (context) => AccountSummary(user: user!)));
                           } else if (menus == 'Order History') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates()));
+                                    // builder: (context) => Concentrates()));
+
+                            builder: (context) => OrderHistory(cartTitle: '', cartprice: '5', cartImage: '',)));
                           } else if (menus == 'Blog') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates()));
+                                    builder: (context) =>CartPage()));
                           } else if (menus == 'About') {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Concentrates()));
+                                    builder: (context) => CartPage()));
                           } else {
                             // Navigator.push(
                             //     context,

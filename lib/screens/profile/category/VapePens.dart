@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/screens/profile/CartPage.dart';
+import 'package:purplestarmd/screens/profile/ProductHeading.dart';
+import 'package:purplestarmd/widgets/CustomAppBar.dart';
 
-import '../models/SaleCategories.dart';
-import '../models/SaleServices.dart';
-
-class SalePage extends StatefulWidget {
-  const SalePage({Key? key}) : super(key: key);
+class VapePens extends StatefulWidget {
+  const VapePens({Key? key, required this.pageTitle}) : super(key: key);
+  final String pageTitle;
 
   @override
-  State<SalePage> createState() => _SalePageState();
+  State<VapePens> createState() => _VapePensState();
 }
 
-class _SalePageState extends State<SalePage> {
-  Future<List<SalesCategory>>? futureProduct;
+class _VapePensState extends State<VapePens> {
+  String? _title;
 
   @override
   void initState() {
+    _title = widget.pageTitle;
     super.initState();
-    futureProduct = fetchProduct();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -31,20 +32,20 @@ class _SalePageState extends State<SalePage> {
               child: Row(
                 children: [
                   Text(
-                    'Sales',
-                    style: TextStyle(fontSize: 30, fontFamily: 'BebasNeue', color: Colors.red.shade900),
+                    '$_title',
+                    style: TextStyle(fontSize: 30, fontFamily: 'BebasNeue'),
                   ),
                   Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 130),
+                        padding: EdgeInsets.only(left: 125),
                         child: InkWell(
                           onTap: () {},
                           child: Icon(Icons.filter_alt_outlined),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 25),
+                        padding: const EdgeInsets.only(left: 10),
                         child: InkWell(
                           onTap: () {},
                           child: Icon(Icons.tune_outlined),
@@ -55,7 +56,7 @@ class _SalePageState extends State<SalePage> {
                 ],
               ),
             ),
-            CartPage(),
+            // CartPage(),
           ],
         ),
       ),

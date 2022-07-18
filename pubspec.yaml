@@ -29,6 +29,9 @@ dev_dependencies:
   cloud_firestore: ^3.2.1
   firebase_auth: ^3.4.1
   firebase_core: ^1.19.1
+  intl: ^0.17.0
+
+
 
 
 flutter:
