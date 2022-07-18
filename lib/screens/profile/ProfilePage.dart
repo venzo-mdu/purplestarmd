@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/screens/HomePage.dart';
+import 'package:purplestarmd/screens/profile/AccountSummary.dart';
 import 'package:purplestarmd/screens/profile/CartPage.dart';
 import 'package:purplestarmd/screens/profile/OrderHistory.dart';
 import 'package:purplestarmd/screens/profile/category/Edibles.dart';
@@ -39,6 +40,7 @@ class _ProfilePageState extends State<ProfilePage> {
   ];
   var profileMenu = ['Account', 'Order History', 'Blog', 'About', 'Logout'];
   late User _currentUser;
+  final _auth = FirebaseAuth.instance;
 
   @override
   void initState() {
@@ -175,10 +177,11 @@ class _ProfilePageState extends State<ProfilePage> {
                         onTap: () {
                           // ['Account', 'Order History', 'Blog', 'About', 'Log Out']
                           if (menus == 'Account') {
+                            var user = _auth.currentUser;
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => CartPage()));
+                                    builder: (context) => AccountSummary(user: user!,)));
                           } else if (menus == 'Order History') {
                             Navigator.push(
                                 context,

@@ -56,7 +56,8 @@ class _RegisterPageState extends State<RegisterPage> {
       body: FutureBuilder(
         future: _initializeFirebase(),
         builder: (context, snapshop) {
-          if (snapshop.connectionState == ConnectionState.done) {
+          if (snapshop.connectionState == ConnectionState.done ) {
+
             return SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(30, 80, 30, 30),
@@ -312,30 +313,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: InkWell(
                         onTap: () async {
 
-                          // _firestore.collection('userInfo').add({
-                          //   'email': _emailTextController.text,
-                          //   'name': _nameTextController.text,
-                          //   'password': _passwordTextController.text,
-                          //   'phone': _phoneTextController,
-                          // });
-
-                          // userInfo.add({
-                          //   'email': _emailTextController.text,
-                          //   'name': _nameTextController.text,
-                          //   'password': _passwordTextController.text,
-                          //
-                          // });
-
-
                           if (_formKey.currentState!.validate()) {
-
-                            // userInfo.add({
-                            //   'email': _emailTextController.text,
-                            //   'name': _nameTextController.text,
-                            //   'password': _passwordTextController.text,
-                            //   'phone': _phoneTextController.text,
-                            // });
-
 
                             User? user =
                                 await FireAuth.registerUsingEmailPassword(
@@ -354,10 +332,6 @@ class _RegisterPageState extends State<RegisterPage> {
                             }
                             print(email);
                             print(visiblePassword);
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //         builder: (context) => ProfilePage()));
                           }
                         },
                         child: Container(
