@@ -30,12 +30,8 @@ class _UserPasswordState extends State<UserPassword> {
     super.initState();
   }
 
-  // String emailAddress = _email;
-
-  final _auth = FirebaseAuth.instance;
-
   // final TextEditingController emailAddress = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  final passwordController = TextEditingController();
 
   String? errorMessage;
 
@@ -119,24 +115,38 @@ class _UserPasswordState extends State<UserPassword> {
                     child: ElevatedButton(
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
-                          try {
-                            // var user = _email;
-                            var user = _auth.currentUser;
-                            print(_email);
-                            print(user);
-                            await _auth
-                                .signInWithEmailAndPassword(
-                                    email: _email,
-                                    password: passwordController.text)
-                                .then((uid) => {
-                                      Navigator.of(context).pushReplacement(
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ProfilePage(user: user!)))
-                                    });
-                          } catch (e) {
-                            print(e);
+
+                          var email = _email.toString();
+                          var password = passwordController.text.trim();
+
+                          FirebaseAuth auth = FirebaseAuth.instance;
+                          UserCredential userCredential = await auth.signInWithEmailAndPassword(email: email, password: password);
+
+                          if(userCredential.user != null){
+                            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfilePage(user: userCredential.user!)));
+                            print('Login Successful');
                           }
+
+
+
+                        //   try {
+                        //     // var user = _email;
+                        //     var user = _auth.currentUser;
+                        //     print(_email);
+                        //     print(user);
+                        //     await _auth
+                        //         .signInWithEmailAndPassword(
+                        //             email: _email,
+                        //             password: passwordController.text)
+                        //         .then((uid) => {
+                        //               Navigator.of(context).pushReplacement(
+                        //                   MaterialPageRoute(
+                        //                       builder: (context) =>
+                        //                           ProfilePage(user: user!)))
+                        //             });
+                        //   } catch (e) {
+                        //     print(e);
+                        //   }
                         }
 
                         // try{

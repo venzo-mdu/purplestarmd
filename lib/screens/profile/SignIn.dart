@@ -17,7 +17,7 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final _formKey = GlobalKey<FormState>();
   String? email;
-  final TextEditingController emailController = TextEditingController();
+  final emailController = TextEditingController();
   final _auth = FirebaseAuth.instance;
 
   @override
@@ -113,7 +113,7 @@ class _SignInState extends State<SignIn> {
                               onPressed: () {
                                 if(_formKey.currentState!.validate()) {
 
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserPassword(email: emailController.text)));
+                                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserPassword(email: emailController.text.trim())));
                                   print(emailController.text);
                                 }
                               },

@@ -1,17 +1,22 @@
 class Regiser {
+  String uid;
   String fullname;
   String emailaddress;
   double phonenumber;
 
-  Regiser(
-      this. fullname,
-      this.emailaddress,
-      this.phonenumber,
-  );
+  Regiser({
+    required this.uid,
+    required this.fullname,
+    required this.emailaddress,
+    required this.phonenumber,
+  });
 
-  Map<String, dynamic> toJson() => {
-    'fullname': fullname,
-    'emailaddress': emailaddress,
-    'phonenumber': phonenumber,
-  };
+  static Regiser fromMap(Map<String, dynamic> map) {
+    return Regiser(
+      uid: map['uid'],
+      fullname: map['fullname'],
+      emailaddress: map['emailaddress'],
+      phonenumber: map['phonenumber'],
+    );
+  }
 }
