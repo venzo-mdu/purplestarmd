@@ -314,6 +314,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       FirebaseAuth auth = FirebaseAuth.instance;
                       UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: email, password: password);
 
+                      User? firebaseUser = userCredential.user;
+
                       if(userCredential.user != null) {
                         CollectionReference userData = FirebaseFirestore.instance.collection('userInfo');
 
@@ -327,7 +329,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           'password': password,
                         });
                         print('Firebase Auth and Firestore Successfully');
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfilePage(user: userCredential.user!)));
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfilePage(user: firebaseUser!)));
                       }
 
 

@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/models/SaleCategories.dart';
 import 'package:purplestarmd/models/SaleServices.dart';
 import 'package:purplestarmd/screens/profile/OrderHistory.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ProceedCart extends StatefulWidget {
   const ProceedCart({
@@ -24,6 +26,8 @@ class _ProceedCartState extends State<ProceedCart> {
   String? _image;
   String? _price;
 
+  final _auth = FirebaseAuth.instance;
+  CollectionReference placeOrder = FirebaseFirestore.instance.collection('PlaceOrder');
 
   void initState() {
     _title = widget.cartTitle;
@@ -78,6 +82,9 @@ class _ProceedCartState extends State<ProceedCart> {
                         ),
                       ),
                       onPressed: () {
+
+
+
 
                         // Navigator.push(
                         //   context,
