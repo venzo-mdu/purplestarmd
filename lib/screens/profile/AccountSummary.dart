@@ -1,6 +1,9 @@
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/widgets/CustomAppBar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class AccountSummary extends StatefulWidget {
   const AccountSummary({Key? key, required this.user}) : super(key: key);
@@ -13,6 +16,7 @@ class AccountSummary extends StatefulWidget {
 
 class _AccountSummaryState extends State<AccountSummary> {
   late User _currentUser;
+  late String myPhone;
 
   @override
   void initState() {
@@ -26,8 +30,6 @@ class _AccountSummaryState extends State<AccountSummary> {
       appBar: CustomAppBar(),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        // padding: EdgeInsets.only(top: 00, left: 20, right: 20),
-
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -66,7 +68,6 @@ class _AccountSummaryState extends State<AccountSummary> {
               color: Colors.grey,
               thickness: .5,
             ),
-
             Padding(
               padding: const EdgeInsets.only(left: 300),
               child: ElevatedButton(
@@ -75,13 +76,12 @@ class _AccountSummaryState extends State<AccountSummary> {
                   primary: Colors.grey,
                   onPrimary: Colors.black,
                 ),
-
                 child: Text(
-                  'Edit', style: TextStyle(),
+                  'Edit',
+                  style: TextStyle(),
                 ),
               ),
             ),
-
             Padding(
               padding: EdgeInsets.only(left: 20, top: 00),
               child: Text(
@@ -106,18 +106,47 @@ class _AccountSummaryState extends State<AccountSummary> {
             ),
             Padding(
               padding: EdgeInsets.only(left: 20, top: 00),
-              child: Text(
-                'Phone : ${_currentUser.phoneNumber}',
-                style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'poppins'),
-              ),
+              child: FutureBuilder(
+                future: _fetch(),
+                builder: (context, snapshot){
+                  if(snapshot.connectionState != ConnectionState.done)
+                    return Text("Loading data...Please wait");
+                  return Text("Email : $myPhone");
+                },
+              )
             ),
           ],
         ),
       ),
     );
   }
+
+  _fetch() async {
+    final firebaseUser = await FirebaseAuth.instance.currentUser;
+    if (firebaseUser != null)
+      await FirebaseFirestore.instance
+          .collection('userInfo')
+          .doc(firebaseUser.uid)
+          .get()
+          .then((phone) {
+        myPhone = phone.data()!['phone'];
+        print(myPhone);
+      }).catchError((e) {
+        print(e);
+      });
+  }
 }
+
+
+
+// Padding(
+//   padding: EdgeInsets.only(left: 20, top: 00),
+//   child: Text(
+//     'Phone : ${_currentUser.phoneNumber}',
+//     style: TextStyle(
+//         fontSize: 14,
+//         color: Colors.black,
+//         fontWeight: FontWeight.w700,
+//         fontFamily: 'poppins'),
+//   ),
+// ),

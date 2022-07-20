@@ -1,3 +1,5 @@
+// import 'dart:html';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/screens/HomePage.dart';
@@ -7,6 +9,7 @@ import 'package:purplestarmd/screens/profile/OrderHistory.dart';
 import 'package:purplestarmd/screens/profile/category/Edibles.dart';
 import 'package:purplestarmd/widgets/CustomAppBar.dart';
 import 'package:purplestarmd/widgets/CustomBottomNavigation.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../widgets/ShopbyCategory.dart';
 import 'category/Accessories.dart';
@@ -39,8 +42,14 @@ class _ProfilePageState extends State<ProfilePage> {
     'Sales'
   ];
   var profileMenu = ['Account', 'Order History', 'Blog', 'About', 'Logout'];
+
   late User _currentUser;
   final _auth = FirebaseAuth.instance;
+
+  final fireStore = FirebaseFirestore.instance;
+  FirebaseAuth auth = FirebaseAuth.instance;
+
+  CollectionReference users = FirebaseFirestore.instance.collection('userInfo');
 
   @override
   void initState() {
@@ -59,7 +68,7 @@ class _ProfilePageState extends State<ProfilePage> {
             Padding(
               padding: EdgeInsets.fromLTRB(25, 30, 0, 5),
               child: Text(
-                'Hi, ${_currentUser.displayName}',
+                'Hi, ${_currentUser.displayName}',    //${snapshot.data}
                 style: TextStyle(fontSize: 30, fontFamily: 'BebasNeue'),
               ),
             ),
@@ -236,9 +245,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   .signOut();
                                               Navigator.of(context)
                                                   .pushReplacement(
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                              HomePage()));
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          HomePage()));
                                             },
                                           ),
                                           // Divider(color: Colors.grey),

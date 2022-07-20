@@ -312,15 +312,23 @@ class _RegisterPageState extends State<RegisterPage> {
                       var password = _passwordTextController.text.trim();
 
                       FirebaseAuth auth = FirebaseAuth.instance;
-                      UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: email, password: password);
+                      User? user;
 
-                      User? firebaseUser = userCredential.user;
+
+
+                      UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: email, password: password);
+                      user = userCredential.user;
+                      await user!.updateProfile(displayName: name);
+                      user = auth.currentUser;
+
 
                       if(userCredential.user != null) {
                         CollectionReference userData = FirebaseFirestore.instance.collection('userInfo');
 
                         String uid = userCredential.user!.uid;
+                        print(uid);
                         int dt = DateTime.now().microsecondsSinceEpoch;
+                        print(dt);
 
                         await userData.add({
                           'name': name,
@@ -329,10 +337,8 @@ class _RegisterPageState extends State<RegisterPage> {
                           'password': password,
                         });
                         print('Firebase Auth and Firestore Successfully');
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfilePage(user: firebaseUser!)));
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfilePage(user: user!)));
                       }
-
-
 
 
 
