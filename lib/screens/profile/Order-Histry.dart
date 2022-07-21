@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-
 import '../../widgets/CustomAppBar.dart';
 
 class OrderHistory extends StatefulWidget {
-  // const OrderHistory({Key? key}) : super(key: key);
   const OrderHistory({
     Key? key,
     required this.cartTitle,
@@ -28,7 +26,6 @@ class _OrderHistoryState extends State<OrderHistory> {
 
   DateTime dateTime = DateTime.now();
 
-
   void initState() {
     _title = widget.cartTitle;
     _image = widget.cartImage;
@@ -42,8 +39,6 @@ class _OrderHistoryState extends State<OrderHistory> {
       appBar: CustomAppBar(),
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
-        // padding: EdgeInsets.only(top: 00, left: 20, right: 20),
-
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -61,44 +56,64 @@ class _OrderHistoryState extends State<OrderHistory> {
                     fontWeight: FontWeight.w500),
               ),
             ),
-            SizedBox(height: 20,),
-
-
-            Padding(padding: EdgeInsets.only(left: 20, top: 00), child: Text(
-              "ORDER HISTORY",
-              style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w100,
-                  fontFamily: 'BebasNeue'),
-            ),),
-            SizedBox(height: 10,),
-
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: EdgeInsets.only(left: 20, top: 00),
+              child: Text(
+                "ORDER HISTORY",
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w100,
+                    fontFamily: 'BebasNeue'),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Divider(
-              color: Colors.grey,
+              color: Colors.grey[250],
               thickness: 10,
             ),
+            Padding(
+              padding: EdgeInsets.only(left: 00, top: 00, ),
+              child: ListTile(
+                trailing: Icon(Icons.chevron_right),
+                title: Text(
+                  DateFormat.MMMMEEEEd().format(
+                      dateTime), //('yyyy-MM-dd').format(DateTime.now()),
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'poppins'),
+                ),
+              ),
+            ),
 
-            Padding(padding: EdgeInsets.only(left: 20, top: 00),
-              child: Text(
-                DateFormat.MMMMEEEEd().format(dateTime),                 //('yyyy-MM-dd').format(DateTime.now()),
-                style: TextStyle(
-                  fontSize: 14,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w700,
-                  fontFamily: 'poppins'),
-            ),),
-
-            Text('\$$_price'),
-
+            Padding(
+              padding: EdgeInsets.only(left: 20, top: 00),
+              child: Text('\$$_price'),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             Image(
               image: NetworkImage(
                 '$_image',
               ),
-              width: 100,
-              height: 75,
-            )
-
+              width: 90,
+              height: 55,
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Divider(
+              color: Colors.grey[250],
+              thickness: 10,
+            ),
           ],
         ),
       ),

@@ -36,23 +36,28 @@ class DealPage extends StatelessWidget {
                       ),
                     ],
                   ),
+
+
                   Text('#PURPLESTAR',
                       style: TextStyle(
                         fontWeight: FontWeight.w100,
                         fontFamily: 'BebasNeue',
                         fontSize: 25,
                       )),
+                  SizedBox(height: 10,),
                   Text(
                     'Check all  the great product placeholder text'
                         ' here to keep this up to date with all info for product.'
                         ' Check all the great product placeholder text here to keep this up to date with all info for product',
                   ),
+                  SizedBox(height:20),
                   Text('see all',
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontFamily: 'Poppins',
                         fontSize: 15,
                       )),
+                  SizedBox(height: 5,),
                   Text(
                     'Flavor items',
                     style: TextStyle(

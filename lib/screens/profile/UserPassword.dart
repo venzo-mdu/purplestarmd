@@ -44,7 +44,7 @@ class _UserPasswordState extends State<UserPassword> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text('$_email'),
+            // Text('$_email'),
             Text(
               'Sign In',
               style: TextStyle(

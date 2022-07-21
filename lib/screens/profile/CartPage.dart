@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:purplestarmd/models/SaleCategories.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
+import 'package:purplestarmd/screens/HomePage.dart';
 import 'package:purplestarmd/screens/ProceedCart.dart';
 import 'package:purplestarmd/screens/SalePage.dart';
 import '../../models/DropDown.dart';
@@ -278,39 +279,39 @@ AddToBasket(BuildContext context, SalesCategory product) async {
                           TextStyle(fontFamily: 'BebasNeue', fontSize: 17)),
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => CartPage()));
+                            builder: (context) => HomePage()));
                       }),
                 ),
                 SizedBox(
                   height: 50,
                 ),
-                Text(
-                  'bogo deals',
-                  style: TextStyle(
-                      fontFamily: 'BebasNeue', fontSize: 30, color: Colors.red),
-                ),
-                Row(
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(0.0),
-                      child: SizedBox(
-                        height: 100.0,
-                        width: 100.0,
-                        child: Image(
-                          image: NetworkImage(product.productImageUrl),
-                        ),
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(product.title),
-                        Text(product.made),
-                        Text(product.price)
-                      ],
-                    )
-                  ],
-                ),
+                // Text(
+                //   'bogo deals',
+                //   style: TextStyle(
+                //       fontFamily: 'BebasNeue', fontSize: 30, color: Colors.red),
+                // ),
+                // Row(
+                //   children: [
+                //     ClipRRect(
+                //       borderRadius: BorderRadius.circular(0.0),
+                //       child: SizedBox(
+                //         height: 100.0,
+                //         width: 100.0,
+                //         child: Image(
+                //           image: NetworkImage(product.productImageUrl),
+                //         ),
+                //       ),
+                //     ),
+                //     Column(
+                //       crossAxisAlignment: CrossAxisAlignment.start,
+                //       children: [
+                //         Text(product.title),
+                //         Text(product.made),
+                //         Text(product.price)
+                //       ],
+                //     )
+                //   ],
+                // ),
               ],
             ),
           ),

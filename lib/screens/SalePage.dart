@@ -37,7 +37,7 @@ class _SalePageState extends State<SalePage> {
                   Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 130),
+                        padding: EdgeInsets.only(left: 220),
                         child: InkWell(
                           onTap: () {},
                           child: Icon(Icons.filter_alt_outlined),

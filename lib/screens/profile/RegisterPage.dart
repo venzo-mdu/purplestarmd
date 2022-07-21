@@ -18,11 +18,17 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
+  final _formkey1 = GlobalKey<FormState>();
+  // final _formkey2 = GlobalKey<FormState>();
+  // final _formkey3 = GlobalKey<FormState>();
+
   String? email;
   String? name;
   int? phone;
   bool value = false;
   bool visiblePassword = false;
+  bool isChecked = false;
+
 
   final _nameTextController = TextEditingController();
   final _emailTextController = TextEditingController();
@@ -81,7 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         keyboardType: TextInputType.text,
                         validator: (value) {
                           if (value?.isEmpty ?? true) {
-                            return 'Please your name';
+                            return 'Enter your name';
                           }
                           return null;
                         },
@@ -130,17 +136,30 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     Form(
+
                       child: TextFormField(
+
                         controller: _emailTextController,
                         keyboardType: TextInputType.emailAddress,
+                        // validator: (value) {
+                        //   if (value?.isEmpty ?? true) {
+                        //     return 'Please enter your E-mail';
+                        //   }
+                        //   if (!RegExp(
+                        //       "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                        //       .hasMatch(value!)) {
+                        //     return 'Please a valid Email';
+                        //   }
+                        //   return null;
+                        // },
                         validator: (value) {
                           if (value?.isEmpty ?? true) {
                             return 'Please enter your E-mail';
-                          }
-                          if (!RegExp(
-                              "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                          } else if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
                               .hasMatch(value!)) {
                             return 'Please a valid Email';
+                          } else if (value.length == 0) {
+                            return "Name is required";
                           }
                           return null;
                         },
@@ -191,7 +210,23 @@ class _RegisterPageState extends State<RegisterPage> {
                     TextFormField(
                       controller: _phoneTextController,
                       keyboardType: TextInputType.phone,
-                      validator: (value) {},
+                      // validator: (value) {
+                      //   final text = _phoneTextController.value.text;
+                      //   if(text.isEmpty){
+                      //     return 'Can not be empty';
+                      //   } else if(text.length<6){
+                      //     return 'Too Short';
+                      //   }
+                      //
+                      // },
+                      validator: (value) {
+
+                        if (value?.length == 0) {
+                          return "Mobile is required";
+                        } else if (value?.length !=10 ){
+                          return 'Mobile Number must be of 10 digit';
+                        }
+                      },
                       style: TextStyle(
                           fontFamily: 'Poppins', fontSize: 14),
                       decoration: InputDecoration(
@@ -236,9 +271,15 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: TextFormField(
                         controller: _passwordTextController,
                         keyboardType: TextInputType.visiblePassword,
+
                         validator: (value) {
                           if (value?.isEmpty ?? true) {
-                            return 'Please your valid Password';
+                            return 'Please enter your E-mail';
+                          } else if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                              .hasMatch(value!)) {
+                            return 'Please a valid Email';
+                          } else if (value.length == 0) {
+                            return "Name is required";
                           }
                           return null;
                         },
@@ -285,10 +326,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 padding: const EdgeInsets.only(top: 20),
                 child: CheckboxListTile(
                   contentPadding: const EdgeInsets.all(0),
-                  value: value,
-                  onChanged: (value) {
+                  value: isChecked,
+                  onChanged: (bool? value) {
                     setState(() {
-                      value = value ?? false;
+                      isChecked = value!;
                     });
                   },
                   title: const Text(
@@ -304,6 +345,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: InkWell(
                   onTap: () async {
 
+
                     if (_formKey.currentState!.validate()) {
 
                       var name = _nameTextController.text.trim();
@@ -312,7 +354,12 @@ class _RegisterPageState extends State<RegisterPage> {
                       var password = _passwordTextController.text.trim();
 
                       FirebaseAuth auth = FirebaseAuth.instance;
+                      User? user;
+
                       UserCredential userCredential = await auth.createUserWithEmailAndPassword(email: email, password: password);
+                      user = userCredential.user;
+                      await user!.updateProfile(displayName: name);
+                      user = auth.currentUser;
 
                       if(userCredential.user != null) {
                         CollectionReference userData = FirebaseFirestore.instance.collection('userInfo');
@@ -327,7 +374,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           'password': password,
                         });
                         print('Firebase Auth and Firestore Successfully');
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfilePage(user: userCredential.user!)));
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => ProfilePage(user: user!)));
                       }
 
 

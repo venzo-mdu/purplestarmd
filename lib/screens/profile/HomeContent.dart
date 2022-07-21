@@ -54,29 +54,52 @@ class _HomeContentState extends State<HomeContent> {
                     padding: EdgeInsets.all(10),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Image(image: AssetImage('assets/images/deals-1.png'), height: 200, width: 150, fit: BoxFit.cover,),
+                      child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=> DealPage()));
+                        },
+                        child:Image(image: AssetImage('assets/images/deals-1.png'), height: 200, width: 150, fit: BoxFit.cover,),
+
+                      )
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Image(image: AssetImage('assets/images/deals-2.png'), height: 200, width: 150, fit: BoxFit.cover,),
+                      child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (Context)=>DealPage()));
+                        },
+                        child: Image(image: AssetImage('assets/images/deals-2.png'), height: 200, width: 150, fit: BoxFit.cover,),
+
+                      ),
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Image(image: AssetImage('assets/images/deals-3.png'), height: 200, width: 150, fit: BoxFit.cover,),
+                      child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (Context)=>DealPage()));
+                        },
+                        child: Image(image: AssetImage('assets/images/deals-3.png'), height: 200, width: 150, fit: BoxFit.cover,),
+
+                      ),
                     ),
                   ),
                   Container(
                     padding: EdgeInsets.all(10),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Image(image: AssetImage('assets/images/deals-4.png'), height: 200, width: 150, fit: BoxFit.cover,),
-                    ),
+                      child: InkWell(
+                        onTap: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (Context)=>DealPage()));
+                        },
+                        child: Image(image: AssetImage('assets/images/deals-4.png'), height: 200, width: 150, fit: BoxFit.cover,),
+
+                      ),                    ),
                   ),
                 ],
               ),

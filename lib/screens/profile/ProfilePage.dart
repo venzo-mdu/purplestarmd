@@ -35,6 +35,8 @@ class _ProfilePageState extends State<ProfilePage> {
   late User _currentUser;
   final _auth = FirebaseAuth.instance;
 
+
+
   @override
   void initState() {
     _currentUser = widget.user;
@@ -44,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      // appBar: CustomAppBar(),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

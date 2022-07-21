@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:purplestarmd/models/SaleCategories.dart';
 import 'package:purplestarmd/models/SaleServices.dart';
 import 'package:purplestarmd/screens/profile/Order-Histry.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 // import 'package:purplestarmd/screens/profile/OrderHistory.dart';
 
 class ProceedCart extends StatefulWidget {
@@ -79,6 +82,29 @@ class _ProceedCartState extends State<ProceedCart> {
                         ),
                       ),
                       onPressed: () {
+
+                        final User? user = FirebaseAuth.instance.currentUser;
+                        // final uid = user?.uid;
+                        // final uname = user?.displayName;
+                        final userEmail = user!.email;
+
+                        print(userEmail);
+                        // print(user);
+                        // print(uid);
+                        // print(uname);
+
+                        if(user != null) {
+                          CollectionReference userStore = FirebaseFirestore.instance.collection('PlaceOrder');
+
+                          userStore.add({
+                            'uid': userEmail,
+                            'price': '$_price',
+                            'url': '$_image',
+
+                          });
+                          print('Firebase Auth and Firestore Successfully');
+                        }
+
 
                         Navigator.push(
                           context,
